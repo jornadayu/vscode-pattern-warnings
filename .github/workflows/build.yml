@@ -1,0 +1,40 @@
+name: Build
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    name: Build Extension
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
+      - name: Cache Yarn Dependencies
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ hashFiles('**/yarn.lock') }}
+
+      - name: Setup Node and Yarn
+        uses: actions/setup-node@v2
+        with:
+          node-version: "18"
+          cache: "yarn"
+
+      - name: Install Dependencies
+        run: yarn install --prefer-offline
+
+      - name: Run Eslint
+        run: yarn run lint
+
+      - name: Run tsc type checking
+        run: yarn run tsc
+
+      - name: Build Extension
+        run: yarn compile

@@ -1,0 +1,84 @@
+{
+  "name": "pattern-warnings",
+  "displayName": "Pattern Warnings",
+  "description": "Show VsCode-only warnings for regex patterns in code, for warnings you don't want to use a linter for",
+  "version": "0.0.1",
+  "publisher": "jornadayu",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.32.0",
+    "node": ""
+  },
+  "repository": {
+    "url": "https://github.com/jornadayu/vscode-pattern-warnings"
+  },
+  "extensionKind": [
+    "ui"
+  ],
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "*"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "configuration": {
+      "type": "object",
+      "title": "Pattern Warnings",
+      "properties": {
+        "patternWarnings.warnings": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "title": "Warning rules",
+              "properties": {
+                  "pattern": {
+                    "type": "string",
+                    "description": "Regex pattern to match for, example: `'dangerousThing\\.dangerousMethod(.*)'`",
+                    "required": true
+                  },
+                  "warningText": {
+                    "type": "string",
+                    "description": "Warning message to show in lines with the regex pattern",
+                    "required": true
+                  },
+                  "warningHoverText": {
+                    "type": "string",
+                    "description": "Markdown-supported text to show when hovering over this warning",
+                    "required": false
+                  }
+              }
+            },
+            "default": [],
+            "description": "my test configurations"
+        }
+      }
+    },
+    "colors": [
+      {
+        "id": "patternWarnings.warningColor",
+        "description": "Background color for warnings",
+        "defaults": {
+          "dark": "#ff910034",
+          "light": "#ffa7332a",
+          "highContrast": "#ff910031"
+        }
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "lint": "eslint \"src/**/*.ts\"",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.9",
+    "@types/vscode": "^1.32.0",
+    "@typescript-eslint/eslint-plugin": "^5.42.0",
+    "@typescript-eslint/parser": "^5.42.0",
+    "eslint": "^8.26.0",
+    "typescript": "^4.8.4"
+  }
+}
