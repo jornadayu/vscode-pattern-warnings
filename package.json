@@ -19,7 +19,7 @@
     "Other"
   ],
   "activationEvents": [
-    "*"
+    "onStartupFinished"
   ],
   "main": "./out/extension.js",
   "contributes": {
@@ -28,30 +28,30 @@
       "title": "Pattern Warnings",
       "properties": {
         "patternWarnings.warnings": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "title": "Warning rules",
-              "properties": {
-                  "pattern": {
-                    "type": "string",
-                    "description": "Regex pattern to match for, example: `'dangerousThing\\.dangerousMethod(.*)'`",
-                    "required": true
-                  },
-                  "warningText": {
-                    "type": "string",
-                    "description": "Warning message to show in lines with the regex pattern",
-                    "required": true
-                  },
-                  "warningHoverText": {
-                    "type": "string",
-                    "description": "Markdown-supported text to show when hovering over this warning",
-                    "required": false
-                  }
+          "type": "array",
+          "items": {
+            "type": "object",
+            "title": "Warning rules",
+            "properties": {
+              "pattern": {
+                "type": "string",
+                "description": "Regex pattern to match for, example: `'dangerousThing\\.dangerousMethod(.*)'`",
+                "required": true
+              },
+              "warningText": {
+                "type": "string",
+                "description": "Warning message to show in lines with the regex pattern",
+                "required": true
+              },
+              "warningHoverText": {
+                "type": "string",
+                "description": "Markdown-supported text to show when hovering over this warning",
+                "required": false
               }
-            },
-            "default": [],
-            "description": "my test configurations"
+            }
+          },
+          "default": [],
+          "description": "my test configurations"
         }
       }
     },
@@ -79,6 +79,7 @@
     "@typescript-eslint/eslint-plugin": "^5.42.0",
     "@typescript-eslint/parser": "^5.42.0",
     "eslint": "^8.26.0",
-    "typescript": "^4.8.4"
+    "typescript": "^4.8.4",
+    "vsce": "^2.14.0"
   }
 }
