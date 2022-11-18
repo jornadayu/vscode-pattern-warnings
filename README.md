@@ -8,13 +8,13 @@ A VsCode extension to generate in-line warnings for code, to be used with ignora
 
 ````json
 {
-	"patternWarnings.warnings": [
-		{
-			"pattern": "danger\\.someThingDangerous\\(.*",
-			"warningText": "Hey, this is dangerous!",
-			"warningHoverText": "Instead, try:\n\n```js\nnoDanger.notDangerous(123)\n```"
-		}
-	]
+  "patternWarnings.warnings": [
+    {
+      "pattern": "danger\\.someThingDangerous\\(.*",
+      "warningText": "Hey, this is dangerous!",
+      "warningHoverText": "Instead, try:\n\n```js\nnoDanger.notDangerous(123)\n```"
+    }
+  ]
 }
 ````
 
